@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      csv-parse:
+        specifier: ^5.5.6
+        version: 5.5.6
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.2
@@ -67,6 +71,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  csv-parse@5.5.6:
+    resolution: {integrity: sha512-uNpm30m/AGSkLxxy7d9yRXpJQFrZzVWLFBkS+6ngPcZkw/5k3L/jjFuj7tVnEpRn+QgmiXr21nDlhCiUK4ij2A==}
+
 snapshots:
 
   '@biomejs/biome@1.9.2':
@@ -103,3 +110,5 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.9.2':
     optional: true
+
+  csv-parse@5.5.6: {}

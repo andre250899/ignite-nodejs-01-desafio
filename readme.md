@@ -2,6 +2,13 @@
 
 Resolução do desafio 01 da trilha de Node da Rocketseat com base nos meus conhecimentos obtidos ao longo desse módulo, com ênfase para a conclusão sem o auxílio de nenhum framework nodejs e utilização de streams.
 
+# 🔥 Como iniciar
+
+- `pnpm install`
+- `pnpm dev`
+- Utilize um cliente http para realizar as requisições de acordo com rotas e regras de negócio abaixo.
+- utilize o comando `node streams/csv-upload-to-http-stream.js` para testar a leitura do arquivo csv na pasta raiz do projeto e a escrita no banco de dados. Se preferir também poderá incrementar o arquivo seguindo o seguinte formato: `título da task,descrição`.
+
 # 🚀 Sobre o Desafio
 
 Nesse desafio você desenvolverá uma API para realizar o CRUD de suas _tasks_ (tarefas).
