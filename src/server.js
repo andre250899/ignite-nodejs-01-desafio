@@ -1,29 +1,38 @@
 import { createServer } from 'node:http'
+import { json } from './middlewares/json.js'
 
 const tasks = []
 
-const server = createServer((req, res) => {
+const server = createServer(async (req, res) => {
   const { method, url } = req
+
+  await json(req, res)
 
   if (method === 'GET' && url === '/tasks') {
     return res.end(JSON.stringify({ data: tasks }))
   }
 
   if (method === 'POST' && url === '/tasks') {
-    tasks.push({
-      id: tasks.length + 1,
-      title: `tarefa ${tasks.length + 1}`,
-      description: `descricao da tarefa ${tasks.length + 1}`,
-      completedAt: null,
-      createdAt: new Date(),
-      updatedAt: null,
-    })
+    try {
+      const { title, description } = req.body
 
-    res.writeHead(201, { 'Content-Type': 'application/json' })
-    return res.end(JSON.stringify({ message: 'Usuário cadastrado!' }))
+      tasks.push({
+        id: tasks.length + 1,
+        title,
+        description,
+        completedAt: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })
+
+      return res.end(JSON.stringify({ message: 'Usuário cadastrado' }))
+    } catch (error) {
+      console.log(req.data)
+      return res.end(JSON.stringify({ message: error.message }))
+    }
   }
 
-  return res.end(JSON.stringify({ message: 'Hello, World!' }))
+  return res.end(JSON.stringify({ message: 'Rota não encontrada' }))
 })
 
 server.listen(3333, () => {
